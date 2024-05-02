@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Isg.DyeDurham.NameSorter.CLI": {
+      "commandName": "Project",
+      "commandLineArgs": "-i \"unsorted-names-list.txt\" -o \"sorted-names-list.txt\""
+    }
+  }
+}

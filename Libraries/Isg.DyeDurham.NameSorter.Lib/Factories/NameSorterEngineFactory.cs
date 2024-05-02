@@ -5,7 +5,6 @@ using Isg.DyeDurham.NameSorter.Lib.Exceptions;
 using Isg.DyeDurham.NameSorter.Lib.Utils;
 using System.IO;
 using System;
-using System.Linq;
 
 namespace Isg.DyeDurham.NameSorter.Lib.Factories
 {

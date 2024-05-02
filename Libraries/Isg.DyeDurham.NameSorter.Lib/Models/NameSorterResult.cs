@@ -52,5 +52,10 @@ namespace Isg.DyeDurham.NameSorter.Lib.Models
 
             return true;
         }
+
+        public override string ToString()
+        {
+            return string.Join(Constants.RETURN_STANDARD_TABBED, Names);
+        }
     }
 }
