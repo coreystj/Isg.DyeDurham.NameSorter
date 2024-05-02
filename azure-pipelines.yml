@@ -46,6 +46,7 @@ steps:
     cleanDestinationFolder: true
     overwriteExistingFiles: true
   displayName: "Extracting AWSTools"
+  
 - task: S3Download@1
   inputs:
     awsCredentials: 'AWSCoreyStjProfile'
@@ -98,36 +99,30 @@ steps:
   displayName: "Extracting CodeInjector"
 
 - script: |
-
     echo Printing directories and folder structure...
-
     echo ""
     echo Current Source Branch Name: $(Build.SourceBranchName)
-
     echo ""
     echo Current build number: $(buildNumber)
-
     echo ""
     echo "Build.ArtifactStagingDirectory:" 
     echo "$(Build.ArtifactStagingDirectory)"
-
     echo ""
     echo "Build.BinariesDirectory:" 
     echo "$(Build.BinariesDirectory)"
-
     echo ""
     echo "Build.SourcesDirectory:"
     echo "$(Build.SourcesDirectory)"
-
     echo ""
     echo "Structure of work folder of this pipeline:"
+  displayName: "Displaying Pipeline Details"
 
 - task: UseDotNet@2
-  displayName: 'Install .NET 6 SDK'
   inputs:
     packageType: 'runtime'
     version: '6.0.x'
     performMultiLevelLookup: true
+  displayName: 'Installing .NET 6 SDK'
 
 - task: PowerShell@2
   inputs:
@@ -175,7 +170,7 @@ steps:
     solution: '$(isgSolution)'
     vsVersion: '16.0'
     configuration: 'release'
-  displayName: 'Building $(isgSolution)'
+  displayName: 'Building Release $(isgSolution)'
 
 - task: VSTest@3
   inputs:
@@ -191,4 +186,4 @@ steps:
   inputs:
     script: 'Isg.DyeDurham.NameSorter.CLI.exe -i "unsorted-names-list.txt" -o "sorted-names-list.txt" -p true'
     workingDirectory: '$(System.DefaultWorkingDirectory)\Tools\Isg.DyeDurham.NameSorter.CLI\bin\Release\net8.0'
-  displayName: 'Execute Application'
+  displayName: 'Executing Application'
