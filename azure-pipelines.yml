@@ -83,13 +83,6 @@ steps:
     echo "Structure of work folder of this pipeline:"
   displayName: "Displaying Pipeline Details"
 
-- task: UseDotNet@2
-  inputs:
-    packageType: 'runtime'
-    version: '6.0.x'
-    performMultiLevelLookup: true
-  displayName: 'Installing .NET 6 SDK'
-
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
