@@ -14,7 +14,7 @@ namespace Isg.DyeDurham.NameSorter.CLI
 {
     public class Program
     {
-        // sample args: -i "unsorted-names-list.txt" -o "sorted-names-list.txt" -p true
+        // sample args: -i "unsorted-names-list.txt" -o "sorted-names-list.txt"
         public static void Main(string[] args)
         {
             Parser.Default.ParseArguments<Options>(args).WithParsed(Execute);
