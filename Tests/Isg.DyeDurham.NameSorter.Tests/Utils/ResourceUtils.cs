@@ -8,11 +8,11 @@ namespace Isg.DyeDurham.NameSorter.Tests.Utils
     {
         internal static string GetFilePath(ResourceFileType resourceFileType)
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string samplePath = string.Join('.', "Resources", "Samples", resourceFileType.ToString(), "txt");
-            string resourcePath = $"{assembly.GetName().Name}.{samplePath}";
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string samplePath = Path.Combine("Resources", "Samples", $"{resourceFileType}.txt");
+            string fullPath = Path.Combine(basePath, samplePath);
 
-            return resourcePath.Replace(".", "\\");
+            return fullPath;
         }
 
         internal static string Read(ResourceFileType resourceFileType)

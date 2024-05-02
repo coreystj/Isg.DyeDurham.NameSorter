@@ -25,5 +25,36 @@ namespace Isg.DyeDurham.NameSorter.Lib.Utils
                 return false;
 			}
         }
+
+        /// <summary>
+        /// Determines whether the rawContent is a binary file content.
+        /// </summary>
+        /// <param name="filePath">The file path to be checked.</param>
+        /// <returns>Returns true if the contents are binary.</returns>
+        public static bool CheckIsBinaryFile(string filePath)
+        {
+            using (FileStream fileStream = File.OpenRead(filePath))
+            {
+                // Define a buffer size for reading bytes from the file
+                byte[] buffer = new byte[1024];
+
+                // Read the first few bytes from the file
+                int bytesRead = fileStream.Read(buffer, 0, buffer.Length);
+
+                // Loop through the read bytes and check for non-textual characters
+                for (int i = 0; i < bytesRead; i++)
+                {
+                    byte currentByte = buffer[i];
+
+                    // Check if the byte value falls outside the range of ASCII printable characters
+                    if ((currentByte < 32 || currentByte > 126) && currentByte != 9 && currentByte != 10 && currentByte != 13)
+                    {
+                        return true; // Non-textual byte found, indicating binary content
+                    }
+                }
+            }
+
+            return false; // No non-textual bytes found, indicating text content
+        }
     }
 }

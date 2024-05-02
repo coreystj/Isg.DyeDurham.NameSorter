@@ -2,6 +2,7 @@
 using Isg.DyeDurham.NameSorter.Lib.Exceptions;
 using Isg.DyeDurham.NameSorter.Lib.Models;
 using System;
+using System.Linq;
 
 namespace Isg.DyeDurham.NameSorter.Lib.Utils
 {
@@ -11,7 +12,8 @@ namespace Isg.DyeDurham.NameSorter.Lib.Utils
         {
             try
             {
-                return new Name(name.Split(' '));
+                return new Name(name.Split(' ')
+                    .Where(x => !string.IsNullOrEmpty(x)).ToArray());
             }
             catch (Exception ex)
             {

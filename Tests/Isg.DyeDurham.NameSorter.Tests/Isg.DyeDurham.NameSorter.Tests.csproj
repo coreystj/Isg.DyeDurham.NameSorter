@@ -13,6 +13,8 @@
     <None Remove="Resources\Samples\Sample_150_Named_Set_1.txt" />
     <None Remove="Resources\Samples\Sample_150_Named_Set_2.txt" />
     <None Remove="Resources\Samples\Sample_Empty_Set_1.txt" />
+    <None Remove="Resources\Samples\Sample_Invalid_Set_1.txt" />
+    <None Remove="Resources\Samples\Sample_Invalid_Set_2.txt" />
     <None Remove="Resources\Samples\Sample_STD_Set_1.txt" />
     <None Remove="Resources\Samples\Sample_STD_Set_1_Expected_Result.txt" />
   </ItemGroup>
@@ -29,11 +31,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Samples\Sample_150_Named_Set_2.txt" />
-    <EmbeddedResource Include="Resources\Samples\Sample_150_Named_Set_1.txt" />
-    <EmbeddedResource Include="Resources\Samples\Sample_Empty_Set_1.txt" />
-    <EmbeddedResource Include="Resources\Samples\Sample_STD_Set_1_Expected_Result.txt" />
-    <EmbeddedResource Include="Resources\Samples\Sample_STD_Set_1.txt" />
+    <EmbeddedResource Include="Resources\Samples\Sample_150_Named_Set_2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Samples\Sample_150_Named_Set_1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Samples\Sample_Empty_Set_1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Samples\Sample_Invalid_Set_2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Samples\Sample_Invalid_Set_1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Samples\Sample_STD_Set_1_Expected_Result.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Samples\Sample_STD_Set_1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

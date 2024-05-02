@@ -5,6 +5,7 @@ using Isg.DyeDurham.NameSorter.Lib.Exceptions;
 using Isg.DyeDurham.NameSorter.Lib.Utils;
 using System.IO;
 using System;
+using System.Linq;
 
 namespace Isg.DyeDurham.NameSorter.Lib.Factories
 {
@@ -21,9 +22,10 @@ namespace Isg.DyeDurham.NameSorter.Lib.Factories
         public static NameSorterEngine CreateFromFile(string filePath)
         {
             if (!File.Exists(filePath))
-            {
                 throw new FileNotFoundException($"The file '{filePath}' does not exist.");
-            }
+            
+            if (FileContentUtils.CheckIsBinaryFile(filePath))
+                throw new InvalidContentException();
 
             string rawContent = File.ReadAllText(filePath);
             return CreateFromRaw(rawContent);
