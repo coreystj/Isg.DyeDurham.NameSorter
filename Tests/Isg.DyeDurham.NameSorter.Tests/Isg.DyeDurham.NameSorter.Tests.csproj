@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Samples\Sample_150_Named_Set_1.txt" />
+    <None Remove="Resources\Samples\Sample_150_Named_Set_2.txt" />
+    <None Remove="Resources\Samples\Sample_Empty_Set_1.txt" />
+    <None Remove="Resources\Samples\Sample_STD_Set_1.txt" />
+    <None Remove="Resources\Samples\Sample_STD_Set_1_Expected_Result.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Samples\Sample_150_Named_Set_2.txt" />
+    <EmbeddedResource Include="Resources\Samples\Sample_150_Named_Set_1.txt" />
+    <EmbeddedResource Include="Resources\Samples\Sample_Empty_Set_1.txt" />
+    <EmbeddedResource Include="Resources\Samples\Sample_STD_Set_1_Expected_Result.txt" />
+    <EmbeddedResource Include="Resources\Samples\Sample_STD_Set_1.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\Isg.DyeDurham.NameSorter.Lib\Isg.DyeDurham.NameSorter.Lib.csproj" />
+  </ItemGroup>
+
+</Project>

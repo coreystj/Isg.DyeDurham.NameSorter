@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Libraries/Isg.DyeDurham.NameSorter.Lib/bin/Debug
+/Libraries/Isg.DyeDurham.NameSorter.Lib/bin/Release
+/Libraries/Isg.DyeDurham.NameSorter.Lib/obj
+/Tests/Isg.DyeDurham.NameSorter.Tests/bin/Debug
+/Tests/Isg.DyeDurham.NameSorter.Tests/bin/Release
+/Tests/Isg.DyeDurham.NameSorter.Tests/obj
+/Tools/Isg.DyeDurham.NameSorter.CLI/bin/Debug
+/Tools/Isg.DyeDurham.NameSorter.CLI/bin/Release
+/Tools/Isg.DyeDurham.NameSorter.CLI/obj
