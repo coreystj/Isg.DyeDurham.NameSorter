@@ -190,5 +190,5 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'Isg.DyeDurham.NameSorter.CLI.exe -i "unsorted-names-list.txt" -o "sorted-names-list.txt" -p true'
-    workingDirectory: '$(System.DefaultWorkingDirectory)\Tools\Isg.DyeDurham.NameSorter.CLI\bin\Debug\net8.0'
+    workingDirectory: '$(System.DefaultWorkingDirectory)\Tools\Isg.DyeDurham.NameSorter.CLI\bin\Release\net8.0'
   displayName: 'Execute Application'
