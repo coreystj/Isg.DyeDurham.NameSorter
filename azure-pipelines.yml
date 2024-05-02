@@ -36,22 +36,6 @@ steps:
   inputs:
     awsCredentials: 'AWSCoreyStjProfile'
     regionName: 'us-east-2'
-    bucketName: 'cntawstools'
-    globExpressions: 'AWSTools_1.0.0.zip'
-    targetFolder: '$(Build.BinariesDirectory)'
-  displayName: "Downloading AWSTools"
-
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: '$(Build.BinariesDirectory)/AWSTools_1.0.0.zip'
-    destinationFolder: '$(Build.BinariesDirectory)/AWSTools'
-    cleanDestinationFolder: true
-    overwriteExistingFiles: true
-  displayName: "Extracting AWSTools"
-- task: S3Download@1
-  inputs:
-    awsCredentials: 'AWSCoreyStjProfile'
-    regionName: 'us-east-2'
     bucketName: 'valiantversioner'
     globExpressions: 'ValiantVersioner_1.0.0.zip'
     targetFolder: '$(Build.BinariesDirectory)'
