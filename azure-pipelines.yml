@@ -176,3 +176,19 @@ steps:
     vsVersion: '16.0'
     configuration: 'release'
   displayName: 'Building $(isgSolution)'
+
+- task: VSTest@3
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\*test*.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+  displayName: 'Executing Tests on $(isgSolution)'
+
+- task: CmdLine@2
+  inputs:
+    script: 'Isg.DyeDurham.NameSorter.CLI.exe -i "unsorted-names-list.txt" -o "sorted-names-list.txt" -p true'
+    workingDirectory: '$(System.DefaultWorkingDirectory)\Tools\Isg.DyeDurham.NameSorter.CLI\bin\Debug\net8.0'
+  displayName: 'Execute Application'
