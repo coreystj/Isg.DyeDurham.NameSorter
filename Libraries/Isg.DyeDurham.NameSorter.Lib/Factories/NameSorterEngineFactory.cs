@@ -1,4 +1,11 @@
-﻿
+﻿/*
+ * Summary: This factory class is used to generate sorter engines.
+ * 
+ * Date: 2024-05-02
+ * Author: Corey St-Jacques
+ * 
+ */
+
 
 using Isg.DyeDurham.NameSorter.Lib.Engines;
 using Isg.DyeDurham.NameSorter.Lib.Exceptions;
@@ -8,6 +15,9 @@ using System;
 
 namespace Isg.DyeDurham.NameSorter.Lib.Factories
 {
+    /// <summary>
+    /// This factory class is used to generate sorter engines.
+    /// </summary>
     public static class NameSorterEngineFactory
     {
         /// <summary>

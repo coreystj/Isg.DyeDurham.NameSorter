@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Summary: This exception is mainly used during raw data processing.
+ * If the data being processed has an excpetion, this will be the exception used.
+ * Date: 2024-05-02
+ * Author: Corey St-Jacques
+ * 
+ */
+
+using System;
 
 namespace Isg.DyeDurham.NameSorter.Lib.Exceptions
 {

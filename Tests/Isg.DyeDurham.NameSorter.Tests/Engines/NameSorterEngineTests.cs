@@ -1,5 +1,11 @@
+/*
+ * Summary: Tests the NameSorterEngine class.
+ * 
+ * Date: 2024-05-02
+ * Author: Corey St-Jacques
+ * 
+ */
 
-using Isg.DyeDurham.NameSorter.Lib.Exceptions;
 using Isg.DyeDurham.NameSorter.Lib.Factories;
 using Isg.DyeDurham.NameSorter.Lib.Models;
 using Isg.DyeDurham.NameSorter.Lib.Utils;

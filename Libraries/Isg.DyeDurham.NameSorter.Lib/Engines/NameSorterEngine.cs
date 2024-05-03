@@ -1,4 +1,12 @@
-﻿using Isg.DyeDurham.NameSorter.Lib.Comparers;
+﻿/*
+ * Summary: This engine sorts names and generates a raw file output of the resulting sort.
+ * Date: 2024-05-02
+ * Author: Corey St-Jacques
+ * 
+ */
+
+
+using Isg.DyeDurham.NameSorter.Lib.Comparers;
 using Isg.DyeDurham.NameSorter.Lib.Models;
 using Isg.DyeDurham.NameSorter.Lib.Utils;
 using System;
@@ -11,8 +19,10 @@ namespace Isg.DyeDurham.NameSorter.Lib.Engines
     /// </summary>
     public class NameSorterEngine
     {
-
-        private Name[] _inputNames;
+        /// <summary>
+        /// All current input names are stored here.
+        /// </summary>
+        private readonly Name[] _inputNames;
 
         /// <summary>
         /// Constructor with parameters.

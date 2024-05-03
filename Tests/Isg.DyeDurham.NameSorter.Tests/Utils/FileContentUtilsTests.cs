@@ -1,4 +1,10 @@
-﻿
+﻿/*
+ * Summary: Tests the FileContentUtils class.
+ * 
+ * Date: 2024-05-02
+ * Author: Corey St-Jacques
+ * 
+ */
 using Isg.DyeDurham.NameSorter.Lib.Exceptions;
 using Isg.DyeDurham.NameSorter.Lib.Models;
 using Isg.DyeDurham.NameSorter.Lib.Utils;
@@ -105,7 +111,7 @@ namespace Isg.DyeDurham.NameSorter.Tests.Engines
             string expectedSecondLine = "World Hello";
 
             // Act
-            FileContentUtils.TryReadLines(rawExpectedFileContent, out string[] expectedLines, out Exception? reason);
+            FileContentUtils.TryReadLines(rawExpectedFileContent, out string[] expectedLines, out _);
 
             // Assert
             Assert.AreEqual(expectedLines.Length, 2);
