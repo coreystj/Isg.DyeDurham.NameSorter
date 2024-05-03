@@ -168,3 +168,26 @@ steps:
     filesAcl: 'public-read'
     createBucket: true
   displayName: "Uploading Nugget For SDK.NET"
+  
+  - task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: 'Web/LandingPage/'
+  displayName: "Installing NPM node modules"
+  
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'Web/LandingPage/'
+    customCommand: 'run build'
+  displayName: "Building Web App"
+  
+- task: S3Upload@1
+  inputs:
+    awsCredentials: 'AWSCoreyStjProfile'
+    regionName: 'us-east-2'
+    bucketName: 'cobalt-mvc-develop'
+    sourceFolder: '$(Build.SourcesDirectory)\Web\LandingPage\dist'
+    globExpressions: '**/*.*'
+    filesAcl: 'public-read'
+  displayName: "Publishing Web App"
