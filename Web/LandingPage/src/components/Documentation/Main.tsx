@@ -1,20 +1,9 @@
 import CopyToClipboardInput from "../Common/CopyClipboard";
-import BackgroundVideo from "./BackgroundVideo";
 import Footer from "./Footer";
 import NavigationBar from "./NavigationBar";
 
-import React from 'react';
 
 export default function Main() {
-  
-    const DownloadSDK = () => {
-        const link = document.createElement('a');
-        link.href = 'https://cobalt-api-develop.s3.us-east-2.amazonaws.com/sdks/CobaltSDK_v1.0.unitypackage';
-        link.setAttribute('download', 'CobaltSDK_v1.0.unitypackage');
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
     
       const ViewGitHub = () => {
         const url = "https://github.com/coreystj/Isg.DyeDurham.NameSorter";

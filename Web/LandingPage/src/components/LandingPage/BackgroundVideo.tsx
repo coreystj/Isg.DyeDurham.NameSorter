@@ -38,19 +38,11 @@ function BackgroundVideo() {
         flexDirection: 'column',
     };
 
+
     const DownloadClient = () => {
         const link = document.createElement('a');
-        link.href = 'https://cobalt-mvc-develop.s3.us-east-2.amazonaws.com/installers/hub/Cobalt+Launcher+1.1.1-b14.msi';
-        link.setAttribute('download', 'Cobalt+Launcher+1.1.1-b14.msi'); // Optional, specifies the filename that user will download
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-
-    const DownloadAndroid = () => {
-        const link = document.createElement('a');
-        link.href = 'https://cobalt-mvc-develop.s3.us-east-2.amazonaws.com/installers/client/android/Cobalt_Client_1.1.1b61.apk';
-        link.setAttribute('download', 'Cobalt_Client_1.1.1b61.apk'); // Optional, specifies the filename that user will download
+        link.href = 'https://namesorter-develop.s3.us-east-2.amazonaws.com/Builds/name-sorter.zip';
+        link.setAttribute('download', 'name-sorter.zip'); // Optional, specifies the filename that user will download
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
