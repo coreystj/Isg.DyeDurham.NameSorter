@@ -71,23 +71,14 @@ function BackgroundVideo() {
                 <div className="m-4" />
                 <div className="m-4" />
                 <img className="mb-2" src="./assets/images/Cobalt metaverse dark.png" height="70" width="205" />
-                <p className="text-outline m-0 p-0">Bridging Realities in the Cross-Platform Metaverse.</p>
-                <p className="text-outline">Uniting Users Across Social Media Platforms for a Shared Virtual Experience.</p>
-                <p className="text-outline">Try the <span className="text-warning">BETA</span> now for free on <span className="text-warning">windows</span>(VR included).</p>
+                <p className="text-outline m-0 p-0">Bringing you the most well known Name Sorter library known to cyber space.</p>
+                <p className="text-outline">Uniting all names in an order that just simply makes sense.</p>
+                <p className="text-outline">Try the <span className="text-warning">BETA</span> command line tool now for free on <span className="text-warning">windows</span>.</p>
                 <div className="row">
                     <div className="btn-group col-auto mt-2" role="group" aria-label="Download Buttons">
                         <button onClick={DownloadClient} className="btn btn-primary">
-                            <img width="16" className="m-1 p-0" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Windows_icon_logo.png" />Windows
+                            <img width="16" className="m-1 p-0" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Windows_icon_logo.png" />Download our CLI for Free
                         </button>
-                        <button onClick={DownloadAndroid} className="btn btn-primary" disabled>
-                            <img width="16" className="m-1 p-0" src="https://www.freeiconspng.com/thumbs/android-icon/android-icon-png-1.png" />Android
-                        </button>
-                        <button onClick={DownloadAndroid} className="btn btn-primary" disabled>
-                            <img width="16" className="m-1 p-0" src="https://static-00.iconduck.com/assets.00/apple-icon-1662x2048-d80o29ez.png" /> iPhone iOS
-                        </button>
-                    </div>
-                    <div className="col-auto mt-2">
-                        <button onClick={GateKeeperUtils.Register} className="btn btn-warning">Register Free</button>
                     </div>
                 </div>
             </div>

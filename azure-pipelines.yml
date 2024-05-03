@@ -156,6 +156,7 @@ steps:
     targetType: 'inline'
     script: |
         dotnet pack "$(cntSdkNetCsProj)" -c Release -o "Libraries/Isg.DyeDurham.NameSorter.Lib/" /p:Version="$(nugetBuildNumber)" /p:description="A library for sorting names." /p:creator="CyproNET Technologies S.A.S."
+  displayName: 'Creating NuGet Package'
 
 - task: S3Upload@1
   inputs:
