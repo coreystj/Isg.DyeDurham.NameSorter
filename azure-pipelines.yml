@@ -186,7 +186,7 @@ steps:
   inputs:
     awsCredentials: 'AWSCoreyStjProfile'
     regionName: 'us-east-2'
-    bucketName: 'cobalt-mvc-develop'
+    bucketName: 'namesorter-develop'
     sourceFolder: '$(Build.SourcesDirectory)\Web\LandingPage\dist'
     globExpressions: '**/*.*'
     filesAcl: 'public-read'
