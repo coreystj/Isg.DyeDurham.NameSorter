@@ -1,0 +1,60 @@
+
+
+.circle-up-background{
+    background-color: rgb(12 14 17) !important;
+}
+
+.dark-divider {
+    border-top: 1px solid #2e2e2e; /* Thicker black border */
+}
+
+.picker-container {
+    position: relative;
+    z-index: 1;
+}
+
+.emoji-picker {
+    position: absolute;
+    top: 100%; /* Position it below the button */
+    left: 0;   /* Align it to the left of the button */
+}
+
+.custom-div:hover {
+    cursor: pointer; /* Always shows the pointer cursor */
+    color: #0d6efd; /* Light grey background on hover, similar to Bootstrap's light hover color */
+}
+
+.left-bar{
+    height: 100vh;
+    position: sticky;
+    top: 0px
+}
+
+.bottom-bar{
+    position: sticky;
+    top: calc(100vh - 60px);
+    z-index: 1
+}
+
+.zero-height{
+    height: 0px !important;
+}
+
+
+.small-window-style {
+    position: relative;
+    bottom: calc(210px - 100vh);
+}
+
+.bg-dark-overlay{
+    --bs-bg-opacity: 0.75;
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.overlay:hover {
+    opacity: 1;
+}
+
+.overlay {
+    opacity: 0;
+}

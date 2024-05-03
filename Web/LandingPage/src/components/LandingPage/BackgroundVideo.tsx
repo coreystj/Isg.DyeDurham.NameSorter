@@ -1,0 +1,98 @@
+import React, { useEffect, useState } from 'react';
+import { GateKeeperUtils } from '../../utils/GateKeeperUtils';
+import { ApiUtils } from '../../utils/ApiUtils';
+import { GateKeeper } from '../../apis/Cnt.GateKeeper.SDK';
+
+function BackgroundVideo() {
+
+    const [totalUsers, setTotalUsers] = useState<number>(0);
+
+    useEffect(()=>{
+        ApiUtils.GetGateKeeperApi().User.ReadCount((userCount: number)=>{
+            setTotalUsers(userCount);
+        }, 
+        (exception : GateKeeper.Exception)=>{
+            console.error(exception.Message);
+        });
+    }, [totalUsers]);
+
+    const videoStyle: React.CSSProperties = {
+        position: 'fixed',
+        right: 0,
+        bottom: 0,
+        minWidth: '100%',
+        minHeight: '100%',
+        width: 'auto',
+        height: 'auto',
+        zIndex: -1,
+        overflow: 'hidden',
+    };
+
+    const contentStyle: React.CSSProperties = {
+        position: 'relative',
+        zIndex: 2,
+        padding: '20px',
+        color: 'white', // Assuming a darker video, white text will stand out more
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+    };
+
+    const DownloadClient = () => {
+        const link = document.createElement('a');
+        link.href = 'https://cobalt-mvc-develop.s3.us-east-2.amazonaws.com/installers/hub/Cobalt+Launcher+1.1.1-b14.msi';
+        link.setAttribute('download', 'Cobalt+Launcher+1.1.1-b14.msi'); // Optional, specifies the filename that user will download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    const DownloadAndroid = () => {
+        const link = document.createElement('a');
+        link.href = 'https://cobalt-mvc-develop.s3.us-east-2.amazonaws.com/installers/client/android/Cobalt_Client_1.1.1b61.apk';
+        link.setAttribute('download', 'Cobalt_Client_1.1.1b61.apk'); // Optional, specifies the filename that user will download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    return (
+        <div className="m-4">
+            <div className="bg-dark" style={videoStyle}>
+                <video playsInline autoPlay muted loop style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                    <source src="/assets/videos/background-video.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.65)' }}></div>
+            </div>
+            <div style={contentStyle} className="mt-4">
+
+
+                <div className="m-4" />
+                <div className="m-4" />
+                <img className="mb-2" src="./assets/images/Cobalt metaverse dark.png" height="70" width="205" />
+                <p className="text-outline m-0 p-0">Bridging Realities in the Cross-Platform Metaverse.</p>
+                <p className="text-outline">Uniting Users Across Social Media Platforms for a Shared Virtual Experience.</p>
+                <p className="text-outline">Try the <span className="text-warning">BETA</span> now for free on <span className="text-warning">windows</span>(VR included).</p>
+                <div className="row">
+                    <div className="btn-group col-auto mt-2" role="group" aria-label="Download Buttons">
+                        <button onClick={DownloadClient} className="btn btn-primary">
+                            <img width="16" className="m-1 p-0" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Windows_icon_logo.png" />Windows
+                        </button>
+                        <button onClick={DownloadAndroid} className="btn btn-primary" disabled>
+                            <img width="16" className="m-1 p-0" src="https://www.freeiconspng.com/thumbs/android-icon/android-icon-png-1.png" />Android
+                        </button>
+                        <button onClick={DownloadAndroid} className="btn btn-primary" disabled>
+                            <img width="16" className="m-1 p-0" src="https://static-00.iconduck.com/assets.00/apple-icon-1662x2048-d80o29ez.png" /> iPhone iOS
+                        </button>
+                    </div>
+                    <div className="col-auto mt-2">
+                        <button onClick={GateKeeperUtils.Register} className="btn btn-warning">Register Free</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default BackgroundVideo;

@@ -10,6 +10,9 @@ variables:
   value: '1.0.0'
 - name: nugetBuildNumber
   value: '1.0.0'
+- name: cntSdkNetCsProj
+  value: 'Libraries/Isg.DyeDurham.NameSorter.Lib/Isg.DyeDurham.NameSorter.Lib.csproj'
+  
 trigger: 
   branches:
     include: 
@@ -146,3 +149,22 @@ steps:
     script: 'name-sorter -i "unsorted-names-list.txt" -o "sorted-names-list.txt"'
     workingDirectory: '$(System.DefaultWorkingDirectory)\Tools\Isg.DyeDurham.NameSorter.CLI\bin\Release\net8.0'
   displayName: 'Executing Application'
+  
+  
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+        dotnet pack "$(cntSdkNetCsProj)" -c Release -o "Libraries/Isg.DyeDurham.NameSorter.Lib/" /p:Version="$(nugetBuildNumber)" /p:description="A library for sorting names." /p:creator="CyproNET Technologies S.A.S."
+
+- task: S3Upload@1
+  inputs:
+    awsCredentials: 'AWSCoreyStjProfile'
+    regionName: 'us-east-2'
+    bucketName: 'cntnugetserver'
+    sourceFolder: 'Libraries/Isg.DyeDurham.NameSorter.Lib/'
+    globExpressions: '**.nupkg'
+    targetFolder: 'Isg.DyeDurham.NameSorter.Lib'
+    filesAcl: 'public-read'
+    createBucket: true
+  displayName: "Uploading Nugget For SDK.NET"
