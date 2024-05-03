@@ -169,7 +169,7 @@ steps:
     createBucket: true
   displayName: "Uploading Nugget For SDK.NET"
   
-  - task: Npm@1
+- task: Npm@1
   inputs:
     command: 'install'
     workingDir: 'Web/LandingPage/'
