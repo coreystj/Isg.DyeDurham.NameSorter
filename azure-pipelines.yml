@@ -192,3 +192,29 @@ steps:
     globExpressions: '**/*.*'
     filesAcl: 'public-read'
   displayName: "Publishing Web App"
+
+- task: CmdLine@2
+  inputs:
+    script: 'mkdir Builds'
+    workingDirectory: '$(Build.SourcesDirectory)'
+  displayName: "Preparing Build Folder"
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)\Tools\Isg.DyeDurham.NameSorter.CLI\bin\Release\net8.0'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.SourcesDirectory)/Builds/name-sorter.zip'
+    replaceExistingArchive: true
+  displayName: "Zipping CLI Release"
+  
+- task: S3Upload@1
+  inputs:
+    awsCredentials: 'AWSCoreyStjProfile'
+    regionName: 'us-east-2'
+    bucketName: 'namesorter-develop'
+    sourceFolder: '$(Build.SourcesDirectory)/Builds'
+    globExpressions: '**/*.zip'
+    targetFolder: 'Builds'
+    filesAcl: 'public-read'
+  displayName: "Publishing CLI"
