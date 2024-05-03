@@ -12,6 +12,9 @@ using Isg.DyeDurham.NameSorter.Lib.Models;
 
 namespace Isg.DyeDurham.NameSorter.CLI
 {
+    /// <summary>
+    /// These options are used for command line arguments.
+    /// </summary>
     public class Program
     {
         // sample args: -i "unsorted-names-list.txt" -o "sorted-names-list.txt"
