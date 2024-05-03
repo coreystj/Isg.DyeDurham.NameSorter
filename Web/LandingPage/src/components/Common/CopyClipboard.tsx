@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
-const CopyToClipboardInput: React.FC = () => {
-  const [inputValue, setInputValue] = useState<string>('');
+// Define the props type
+type CopyToClipboardInputProps = {
+  defaultValue: string;
+};
+
+// Update the component to accept `CopyToClipboardInputProps`
+const CopyToClipboardInput: React.FC<CopyToClipboardInputProps> = ({ defaultValue }) => {
+  const [inputValue, setInputValue] = useState<string>(defaultValue);
   const [copied, setCopied] = useState<boolean>(false);
 
   useEffect(() => {
-    // Fetch the default value from the URL and set it as the initial input value
-    setInputValue('https://lyb2ak3xzg.execute-api.us-east-2.amazonaws.com/Prod/v3/index.json');
-  }, []); // Empty dependency array ensures the effect runs only once on component mount
+    // Optionally reset to default value if it changes (consider if needed)
+    setInputValue(defaultValue);
+  }, [defaultValue]); // Depend on defaultValue to reset it when prop changes
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);

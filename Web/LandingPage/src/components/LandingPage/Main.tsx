@@ -3,21 +3,16 @@ import BackgroundVideo from "./BackgroundVideo";
 import Footer from "./Footer";
 import NavigationBar from "./NavigationBar";
 
-import React from 'react';
-
 export default function Main() {
-    const DownloadSDK = () => {
-        const link = document.createElement('a');
-        link.href = 'https://cobalt-api-develop.s3.us-east-2.amazonaws.com/sdks/CobaltSDK_v1.0.unitypackage';
-        link.setAttribute('download', 'CobaltSDK_v1.0.unitypackage');
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
-    
+
       const ViewGitHub = () => {
         const url = "https://github.com/coreystj/Isg.DyeDurham.NameSorter";
         window.open(url, "_blank");
+      }
+
+      const onDocumentationClick = ()=>{
+        window.location.href = "/documentation";
+
       }
     
     return (
@@ -32,7 +27,7 @@ export default function Main() {
                 <h1 className="text-xl font-medium text-light text-outline text-align-right">Getting Started!</h1>
                 <p className="text-light text-outline text-align-right  m-0 p-0">Get started today and view our documentation!</p>
                 <p className="text-light text-outline text-align-right">Easy to follow, easy to use, and easy to integrate.</p>
-                <button className="btn btn-success float-right" style={{ float: 'right' }}>Get Started Here!</button>
+                <button onClick={onDocumentationClick} className="btn btn-success float-right" style={{ float: 'right' }}>Get Started Here!</button>
               </div>
             </div>
           </div>
@@ -58,7 +53,7 @@ export default function Main() {
 
                 <p className="text-light text-outline text-align-right">Use our proprietary NuGet feed to access our latest tools.</p>
 
-                <CopyToClipboardInput/>
+                <CopyToClipboardInput defaultValue={'https://lyb2ak3xzg.execute-api.us-east-2.amazonaws.com/Prod/v3/index.json'}/>
               </div>
             </div>
           </div>

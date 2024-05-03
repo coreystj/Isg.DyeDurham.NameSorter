@@ -10,32 +10,33 @@ export default function Main() {
         window.open(url, "_blank");
       }
     
-      const onDocumentationClick = () => {
-
-
-      }
+      const DownloadClient = () => {
+        const link = document.createElement('a');
+        link.href = 'https://namesorter-develop.s3.us-east-2.amazonaws.com/Builds/name-sorter.zip';
+        link.setAttribute('download', 'name-sorter.zip'); // Optional, specifies the filename that user will download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
     return (
         <div className="w-100 text-dark overflow-auto">
         <NavigationBar />
         <div className="w-100">
-          <div className="bg-white w-100 pb-4 pt-2" style={{ backgroundSize: 'cover', backgroundPosition: 'bottom', background: "linear-gradient(to left, black, transparent), url('./assets/screenshots/Metaverse-community.jpeg')" }}>
+          <div className="bg-white w-100 pb-4 pt-2" style={{ backgroundSize: 'cover', backgroundPosition: 'bottom', background: "linear-gradient(to left, black, transparent), url('./assets/screenshots/downloadbackground.jpg')" }}>
             <div className="row justify-content-end pt-4 m-4">
               <div className="col-auto">
-                <h1 className="text-xl font-medium text-light text-outline text-align-right">Getting Started!</h1>
-                <p className="text-light text-outline text-align-right  m-0 p-0">Get started today and view our documentation!</p>
-                <p className="text-light text-outline text-align-right">Easy to follow, easy to use, and easy to integrate.</p>
-                <button onClick={onDocumentationClick} className="btn btn-success float-right" style={{ float: 'right' }}>Get Started Here!</button>
+                <h1 className="text-xl font-medium text-light text-outline text-align-right">Step 1: Download our Tool!</h1>
+                <p className="text-light text-outline text-align-right">Start by downloading our CLI</p>
+                <button onClick={DownloadClient} className="btn btn-success float-right" style={{ float: 'right' }}>Download CLI Here</button>
               </div>
             </div>
           </div>
 
-          <div className="bg-white w-100 pb-4 pt-2" style={{ backgroundSize: 'cover', background: "linear-gradient(to right, black, transparent), url('./assets/screenshots/cobrascript.png')" }}>
+          <div className="bg-white w-100 pb-4 pt-2" style={{ backgroundSize: 'cover', backgroundPosition: 'bottom', background: "linear-gradient(to right, black, transparent), url('./assets/screenshots/extract.png')" }}>
             <div className="row justify-content-end pt-4 m-4">
               <div className="col">
-                <h1 className="text-xl font-medium text-light text-outline">Open Source!</h1>
-                <p className="text-light text-outline m-0 p-0">Name Sorter is an open source tool,</p>
-                <p className="text-light text-outline">available to all for your sorting needs.</p>
-                <button onClick={ViewGitHub} className="btn btn-warning m-2"><img className="m-1 p-0" width="16" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" />View GitHub</button>
+                <h1 className="text-xl font-medium text-light text-outline">Step 2: Unzip!</h1>
+                <p className="text-light text-outline m-0 p-0">Unzip the CLI tool.</p>
               </div>
             </div>
           </div>
@@ -43,47 +44,26 @@ export default function Main() {
           <div className="bg-white w-100 pb-4 pt-2" style={{ backgroundSize: 'cover', backgroundPosition: 'bottom', background: "linear-gradient(to left, black, transparent), url('./assets/screenshots/nugetfriendly.png')" }}>
             <div className="row justify-content-end pt-4 m-4">
               <div className="col-auto">
-                <h1 className="text-xl font-medium text-light text-outline text-align-right">NuGet Friendly</h1>
-                <p className="text-light text-outline text-align-right m-0 p-0">Install the library within your .NET project today!</p>
-                
-                <p className="text-outline text-align-right text-dark m-0 p-0 bg-light">Install-Package Isg.DyeDurham.NameSorter.Lib</p>
+                <h1 className="text-xl font-medium text-light text-outline text-align-right">Step 3: Execute</h1>
+                <p className="text-light text-outline text-align-right m-0 p-0">Using the "name-sorter" app you can sort your names easily!</p>
+                <p className="text-light text-outline text-align-right m-0 p-0">-i is your input file path.</p>
+                <p className="text-light text-outline text-align-right">-o is your output file path.</p>
 
-                <p className="text-light text-outline text-align-right">Use our proprietary NuGet feed to access our latest tools.</p>
-
-                <CopyToClipboardInput/>
+                <CopyToClipboardInput defaultValue={'name-sorter -i unsorted-names-list.txt -o sorted-names-list.txt'}/>
               </div>
             </div>
           </div>
 
-          <div className="bg-white w-100 pb-4 pt-2" style={{ backgroundSize: 'cover', backgroundPosition: 'center', background: "linear-gradient(to right, black, transparent), url('./assets/screenshots/cross-platform.webp')" }}>
+          <div className="bg-white w-100 pb-4 pt-2" style={{ backgroundSize: 'cover', backgroundPosition: 'center', background: "linear-gradient(to right, black, transparent), url('./assets/screenshots/result.png')" }}>
             <div className="row justify-content-end pt-4 m-4">
               <div className="col">
-                <h1 className="text-xl font-medium text-light text-outline">Lightweight</h1>
-                <p className="text-light m-0 p-0 text-outline">Easy to use and easy to integrate!</p>
-                <p className="text-light text-outline">Sort your names with ease.</p>
+                <h1 className="text-xl font-medium text-light text-outline">The Result</h1>
+                <p className="text-light m-0 p-0 text-outline">A text file created at your designated location 'sorted-names-list.txt'.</p>
+                <p className="text-light text-outline">With a nice formatted display within your console window of your ordered results.</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white w-100 pb-4 pt-2" style={{ backgroundSize: 'cover', backgroundPosition: 'center', background: "linear-gradient(to left, black, transparent), url('./assets/screenshots/eco-friendly.webp')" }}>
-            <div className="row justify-content-end pt-4 m-4">
-              <div className="col-auto">
-                <h1 className="text-xl font-medium text-light text-outline text-align-right">Environmentally Friendly</h1>
-                <p className="text-light m-0 p-0 text-outline text-align-right">Using AWS to host our files,</p>
-                <p className="text-light text-outline text-align-right">you can be sure that keeping the lights on will cost second to none.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white w-100 pb-4 pt-2" style={{ backgroundSize: 'cover', background: "linear-gradient(to right, black, transparent), url('./assets/screenshots/cobalt-mining.jpg')" }}>
-            <div className="row justify-content-end pt-4 m-4">
-              <div className="col">
-                <h1 className="text-xl font-medium text-light text-outline">Why Name Sorter?</h1>
-                <p className="text-light m-0 p-0 text-outline">Have you ever seen a more useful application?</p>
-                <p className="text-light text-outline">How about having a library that is versatile!</p>
-              </div>
-            </div>
-          </div>
           <Footer />
         </div>
       </div>
