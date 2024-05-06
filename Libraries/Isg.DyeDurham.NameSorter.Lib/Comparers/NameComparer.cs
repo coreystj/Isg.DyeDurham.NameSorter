@@ -1,10 +1,19 @@
-﻿using Isg.DyeDurham.NameSorter.Lib.Models;
-using System;
+﻿/*
+ * Summary: This comparer class is used to compare names for ordering.
+ * Date: 2024-05-02
+ * Author: Corey St-Jacques
+ * 
+ */
+
+using Isg.DyeDurham.NameSorter.Lib.Models;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Isg.DyeDurham.NameSorter.Lib.Comparers
 {
+    /// <summary>
+    /// This comparer class is used to compare names for ordering.
+    /// </summary>
     public class NameComparer : IComparer<Name>
     {
         /// <summary>

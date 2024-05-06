@@ -3,6 +3,26 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <Title>Name Sorter Library</Title>
+    <Description>Bringing you the most well known Name Sorter library known to cyber space.
+Uniting all names in an order that just simply makes sense.</Description>
+    <PackageProjectUrl>http://namesorter-develop.s3-website.us-east-2.amazonaws.com/</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/coreystj/Isg.DyeDurham.NameSorter</RepositoryUrl>
+    <FileVersion>1.0.0.1</FileVersion>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Web\LandingPage\src\assets\images\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

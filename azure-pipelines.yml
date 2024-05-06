@@ -10,6 +10,9 @@ variables:
   value: '1.0.0'
 - name: nugetBuildNumber
   value: '1.0.0'
+- name: cntSdkNetCsProj
+  value: 'Libraries/Isg.DyeDurham.NameSorter.Lib/Isg.DyeDurham.NameSorter.Lib.csproj'
+  
 trigger: 
   branches:
     include: 
@@ -66,54 +69,24 @@ steps:
     overwriteExistingFiles: true
   displayName: "Extracting RealmMaster"
 
-- task: S3Download@1
-  inputs:
-    awsCredentials: 'AWSCoreyStjProfile'
-    regionName: 'us-east-2'
-    bucketName: 'codeinjector'
-    globExpressions: 'CodeInjector_1.0.0.zip'
-    targetFolder: '$(Build.BinariesDirectory)'
-  displayName: "Downloading CodeInjector"
-
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: '$(Build.BinariesDirectory)/CodeInjector_1.0.0.zip'
-    destinationFolder: '$(Build.BinariesDirectory)/CodeInjector'
-    cleanDestinationFolder: true
-    overwriteExistingFiles: true
-  displayName: "Extracting CodeInjector"
-
 - script: |
-
     echo Printing directories and folder structure...
-
     echo ""
     echo Current Source Branch Name: $(Build.SourceBranchName)
-
     echo ""
     echo Current build number: $(buildNumber)
-
     echo ""
     echo "Build.ArtifactStagingDirectory:" 
     echo "$(Build.ArtifactStagingDirectory)"
-
     echo ""
     echo "Build.BinariesDirectory:" 
     echo "$(Build.BinariesDirectory)"
-
     echo ""
     echo "Build.SourcesDirectory:"
     echo "$(Build.SourcesDirectory)"
-
     echo ""
     echo "Structure of work folder of this pipeline:"
-
-- task: UseDotNet@2
-  displayName: 'Install .NET 6 SDK'
-  inputs:
-    packageType: 'runtime'
-    version: '6.0.x'
-    performMultiLevelLookup: true
+  displayName: "Displaying Pipeline Details"
 
 - task: PowerShell@2
   inputs:
@@ -161,4 +134,89 @@ steps:
     solution: '$(isgSolution)'
     vsVersion: '16.0'
     configuration: 'release'
-  displayName: 'Building $(isgSolution)'
+  displayName: 'Building Release $(isgSolution)'
+
+- task: VSTest@3
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\*test*.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+  displayName: 'Executing Tests on $(isgSolution)'
+
+- task: CmdLine@2
+  inputs:
+    script: 'name-sorter -i "unsorted-names-list.txt" -o "sorted-names-list.txt"'
+    workingDirectory: '$(System.DefaultWorkingDirectory)\Tools\Isg.DyeDurham.NameSorter.CLI\bin\Release\net8.0'
+  displayName: 'Executing Application'
+  
+  
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+        dotnet pack "$(cntSdkNetCsProj)" -c Release -o "Libraries/Isg.DyeDurham.NameSorter.Lib/" /p:Version="$(nugetBuildNumber)" /p:description="A library for sorting names." /p:creator="CyproNET Technologies S.A.S."
+  displayName: 'Creating NuGet Package'
+
+- task: S3Upload@1
+  inputs:
+    awsCredentials: 'AWSCoreyStjProfile'
+    regionName: 'us-east-2'
+    bucketName: 'cntnugetserver'
+    sourceFolder: 'Libraries/Isg.DyeDurham.NameSorter.Lib/'
+    globExpressions: '**.nupkg'
+    targetFolder: 'Isg.DyeDurham.NameSorter.Lib'
+    filesAcl: 'public-read'
+    createBucket: true
+  displayName: "Uploading Nugget For SDK.NET"
+  
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: 'Web/LandingPage/'
+  displayName: "Installing NPM node modules"
+  
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'Web/LandingPage/'
+    customCommand: 'run build'
+  displayName: "Building Web App"
+  
+- task: S3Upload@1
+  inputs:
+    awsCredentials: 'AWSCoreyStjProfile'
+    regionName: 'us-east-2'
+    bucketName: 'namesorter-develop'
+    sourceFolder: '$(Build.SourcesDirectory)\Web\LandingPage\dist'
+    globExpressions: '**/*.*'
+    filesAcl: 'public-read'
+  displayName: "Publishing Web App"
+
+- task: CmdLine@2
+  inputs:
+    script: 'mkdir Builds'
+    workingDirectory: '$(Build.SourcesDirectory)'
+  displayName: "Preparing Build Folder"
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)\Tools\Isg.DyeDurham.NameSorter.CLI\bin\Release\net8.0'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.SourcesDirectory)/Builds/name-sorter.zip'
+    replaceExistingArchive: true
+  displayName: "Zipping CLI Release"
+  
+- task: S3Upload@1
+  inputs:
+    awsCredentials: 'AWSCoreyStjProfile'
+    regionName: 'us-east-2'
+    bucketName: 'namesorter-develop'
+    sourceFolder: '$(Build.SourcesDirectory)/Builds'
+    globExpressions: '**/*.zip'
+    targetFolder: 'Builds'
+    filesAcl: 'public-read'
+  displayName: "Publishing CLI"

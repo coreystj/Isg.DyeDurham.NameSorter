@@ -1,4 +1,15 @@
-﻿using System;
+﻿/*
+ * Summary: This exception is mainly used during raw data processing.
+ * The names provided must be valid names.
+ * 
+ * Date: 2024-05-02
+ * Author: Corey St-Jacques
+ * 
+ */
+
+
+
+using System;
 
 namespace Isg.DyeDurham.NameSorter.Lib.Exceptions
 {

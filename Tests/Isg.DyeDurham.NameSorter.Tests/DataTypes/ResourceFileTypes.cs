@@ -1,5 +1,17 @@
-﻿namespace Isg.DyeDurham.NameSorter.Tests.DataTypes
+﻿/*
+ * Summary: All resource file types are stored here.
+ * 
+ * Date: 2024-05-02
+ * Author: Corey St-Jacques
+ * 
+ */
+
+
+namespace Isg.DyeDurham.NameSorter.Tests.DataTypes
 {
+    /// <summary>
+    /// All resource file types are stored here.
+    /// </summary>
     internal enum ResourceFileType
     {
         None,

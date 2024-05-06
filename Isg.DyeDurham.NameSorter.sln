@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Isg.DyeDurham.NameSorter.CLI", "Tools\Isg.DyeDurham.NameSorter.CLI\Isg.DyeDurham.NameSorter.CLI.csproj", "{90E83230-89B2-40E1-9503-13C1D38028BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Isg.DyeDurham.NameSorter.CLI", "Tools\Isg.DyeDurham.NameSorter.CLI\Isg.DyeDurham.NameSorter.CLI.csproj", "{90E83230-89B2-40E1-9503-13C1D38028BD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Isg.DyeDurham.NameSorter.Tests", "Tests\Isg.DyeDurham.NameSorter.Tests\Isg.DyeDurham.NameSorter.Tests.csproj", "{BFC43DFE-5E2D-44CE-A4FB-585DF361BBB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Isg.DyeDurham.NameSorter.Lib", "Libraries\Isg.DyeDurham.NameSorter.Lib\Isg.DyeDurham.NameSorter.Lib.csproj", "{BB0C43B8-78A5-40BC-A44D-930421318BA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Isg.DyeDurham.NameSorter.Lib", "Libraries\Isg.DyeDurham.NameSorter.Lib\Isg.DyeDurham.NameSorter.Lib.csproj", "{BB0C43B8-78A5-40BC-A44D-930421318BA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
