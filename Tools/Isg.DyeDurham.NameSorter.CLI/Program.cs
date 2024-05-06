@@ -9,6 +9,7 @@ using Isg.DyeDurham.NameSorter.CLI.Models;
 using Isg.DyeDurham.NameSorter.Lib.Engines;
 using Isg.DyeDurham.NameSorter.Lib.Factories;
 using Isg.DyeDurham.NameSorter.Lib.Models;
+using System.Reflection;
 
 namespace Isg.DyeDurham.NameSorter.CLI
 {
@@ -24,6 +25,8 @@ namespace Isg.DyeDurham.NameSorter.CLI
         /// <param name="args">The associated arguments used in the app.</param>
         public static void Main(string[] args)
         {
+            DisplayTitle();
+            DisplaySoftwareDetails();
             Parser.Default.ParseArguments<Options>(args).WithParsed(Execute);
         }
 
@@ -49,6 +52,34 @@ namespace Isg.DyeDurham.NameSorter.CLI
         }
 
         /// <summary>
+        /// Displays the title of this application.
+        /// </summary>
+        private static void DisplayTitle()
+        {
+            Console.WriteLine(
+                "\r\n  _   _                         _____            _            " +
+                "\r\n | \\ | |                       / ____|          | |           " +
+                "\r\n |  \\| | __ _ _ __ ___   ___  | (___   ___  _ __| |_ ___ _ __ " +
+                "\r\n | . ` |/ _` | '_ ` _ \\ / _ \\  \\___ \\ / _ \\| '__| __/ _ \\ '__|" +
+                "\r\n | |\\  | (_| | | | | | |  __/  ____) | (_) | |  | ||  __/ |   " +
+                "\r\n |_| \\_|\\__,_|_| |_| |_|\\___| |_____/ \\___/|_|   \\__\\___|_|   " +
+                "\r\n"
+                );
+        }
+
+        private static void DisplaySoftwareDetails()
+        {
+            Console.WriteLine("Title: " + "Name Sorter CLI");
+            Console.WriteLine("Description: " + "Sorts your names with ease.");
+            Console.WriteLine("Author: " + "Corey St-Jacques");
+
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            Version version = assembly.GetName().Version;
+            Console.WriteLine("Version: " + version.ToString());
+            Console.WriteLine();
+        }
+
+        /// <summary>
         /// Displays the header console information of this application.
         /// </summary>
         /// <param name="options">The options to be displayed.</param>
@@ -68,8 +99,8 @@ namespace Isg.DyeDurham.NameSorter.CLI
         {
             Console.WriteLine();
             Console.WriteLine("Printing results...");
-            Console.WriteLine(result);
             Console.WriteLine();
+            Console.WriteLine(result);
         }
 
         /// <summary>

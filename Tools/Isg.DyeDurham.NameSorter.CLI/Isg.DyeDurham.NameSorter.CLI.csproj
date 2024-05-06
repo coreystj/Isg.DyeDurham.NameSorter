@@ -7,7 +7,23 @@
     <Nullable>enable</Nullable>
     <Product>$(AssemblyName)</Product>
     <AssemblyName>name-sorter</AssemblyName>
+    <PackageProjectUrl>http://namesorter-develop.s3-website.us-east-2.amazonaws.com/</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/coreystj/Isg.DyeDurham.NameSorter/tree/develop</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>Bringing you the most well known Name Sorter library known to cyber space.
+Uniting all names in an order that just simply makes sense.</Description>
+    <Title>Name Sorter CLI</Title>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Web\LandingPage\src\assets\images\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />

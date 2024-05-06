@@ -17,10 +17,5 @@ namespace Isg.DyeDurham.NameSorter.Lib.DataTypes
         /// The standard return constant used for returning lines.
         /// </summary>
         public const string RETURN_STANDARD = "\r\n";
-
-        /// <summary>
-        /// The standard return constant with a tab used for returning formatted lines.
-        /// </summary>
-        public const string RETURN_STANDARD_TABBED = "\t" + RETURN_STANDARD;
     }
 }

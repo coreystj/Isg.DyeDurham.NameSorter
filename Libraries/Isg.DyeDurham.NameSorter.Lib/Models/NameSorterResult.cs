@@ -9,6 +9,7 @@
 using Isg.DyeDurham.NameSorter.Lib.DataTypes;
 using Isg.DyeDurham.NameSorter.Lib.Utils;
 using System.Linq;
+using System.Text;
 
 namespace Isg.DyeDurham.NameSorter.Lib.Models
 {
@@ -84,7 +85,12 @@ namespace Isg.DyeDurham.NameSorter.Lib.Models
         /// <returns>Returns the names using a spaced delimiter.</returns>
         public override string ToString()
         {
-            return string.Join(Constants.RETURN_STANDARD_TABBED, Names);
+            var stringBuilder = new StringBuilder();
+            int index = 1;
+            foreach (Name name in Names) {
+                stringBuilder.Append($"\t{index++}) " + name + "\r\n");
+            }
+            return stringBuilder.ToString();
         }
     }
 }
