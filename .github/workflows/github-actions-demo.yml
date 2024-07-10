@@ -28,6 +28,9 @@ jobs:
     
       - name: Build solution
         run: dotnet build --configuration Release --no-restore  # Build your .NET solution
+
+      - name: Build solution
+        run: dotnet build --configuration Debug --no-restore  # Build your .NET solution
       
       - name: Execute Unit Tests
         run: dotnet test --no-build --verbosity normal
