@@ -17,15 +17,17 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
-
       - name: Setup .NET 8.x
         uses: actions/setup-dotnet@v3
         with:
           # Semantic version range syntax or exact version of a dotnet version
           dotnet-version: '8.x'
-          
+
+      - name: Restore dependencies
+        run: dotnet restore  # Restore NuGet packages
+    
+      - name: Build solution
+        run: dotnet build --configuration Release --no-restore  # Build your .NET solution
+      
       - name: Execute Unit Tests
         run: dotnet test --no-build --verbosity normal
-        
-      - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
