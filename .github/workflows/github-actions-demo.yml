@@ -27,9 +27,6 @@ jobs:
         run: dotnet restore  # Restore NuGet packages
     
       - name: Build solution
-        run: dotnet build --configuration Release --no-restore  # Build your .NET solution
-
-      - name: Build solution
         run: dotnet build --configuration Debug --no-restore  # Build your .NET solution
       
       - name: Execute Unit Tests
